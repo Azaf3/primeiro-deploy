@@ -2212,10 +2212,21 @@ body.anim-paused .bg-anim * {
   }
 }
 
-/* Instituto Evolutivo de Educação */
+/* Apoio: Instituto Evolutivo de Educação */
+.cert-support {
+  display: flex;
+  align-items: center;
+  gap: 0.9cqw;
+}
+.cert-support > span {
+  font-family: var(--font-mono);
+  font-size: 0.95cqw;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
 .cert-iee {
-  height: 9cqw;
-  margin: -1.2cqw 0;
+  height: 5.4cqw;
   width: auto;
   display: block;
 }
@@ -2228,40 +2239,44 @@ body.anim-paused .bg-anim * {
 .cert-center .cert-code {
   font-size: 0.95cqw;
 }
-.cert-sign-role {
-  max-width: 26cqw;
-}
 .footer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+}
+.footer-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--line-2);
 }
 .footer-iee {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--muted);
+  gap: 10px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.footer-iee:hover {
+  opacity: 1;
 }
 .footer-iee-label {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
-.footer-iee-badge {
-  display: inline-grid;
-  place-items: center;
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 6px 24px -12px rgba(0, 0, 0, 0.8);
-  transition: transform 0.2s var(--ease);
+.footer-iee-name {
+  font-size: 0.82rem;
+  color: var(--ink-2);
 }
-.footer-iee:hover .footer-iee-badge {
-  transform: translateY(-2px);
-}
-.footer-iee-badge img {
-  height: 64px;
+.footer-iee img {
+  height: 26px;
   width: auto;
   display: block;
+}
+@media (max-width: 640px) {
+  .footer-sep {
+    display: none;
+  }
 }

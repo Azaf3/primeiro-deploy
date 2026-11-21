@@ -55,13 +55,13 @@ export function Layout() {
         <Outlet />
       </main>
       <footer className="footer">
-        <a className="footer-iee" href="#/" aria-label="Uma iniciativa do Instituto Evolutivo de Educação">
-          <span className="footer-iee-label">uma iniciativa do</span>
-          <span className="footer-iee-badge">
-            <img src="./iee-logo.png" alt="Instituto Evolutivo de Educação" />
-          </span>
-        </a>
-        <span>primeiro-deploy · feito pra quem está começando agora</span>
+        <span>primeiro-deploy · criado por Azaf3 pra quem está começando agora</span>
+        <span className="footer-sep" aria-hidden />
+        <span className="footer-iee">
+          <span className="footer-iee-label">apoio</span>
+          <img src="./iee-emblem-mono.png" alt="" />
+          <span className="footer-iee-name">Instituto Evolutivo de Educação</span>
+        </span>
       </footer>
     </div>
   )

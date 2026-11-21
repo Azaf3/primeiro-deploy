@@ -78,7 +78,7 @@ export function Certificado() {
     new URLSearchParams({
       startTask: 'CERTIFICATION_NAME',
       name: COURSE,
-      organizationName: 'Instituto Evolutivo de Educação',
+      organizationName: 'Primeiro Deploy',
       issueYear: String(date.getFullYear()),
       issueMonth: String(date.getMonth() + 1),
       certUrl: SITE,
@@ -128,7 +128,10 @@ export function Certificado() {
                   primeiro<span className="cert-accent">-deploy</span>
                 </span>
               </span>
-              <img className="cert-iee" src="./iee-logo.png" alt="Instituto Evolutivo de Educação" />
+              <span className="cert-support">
+                <span>Apoio</span>
+                <img className="cert-iee" src="./iee-logo.png" alt="Instituto Evolutivo de Educação" />
+              </span>
             </div>
 
             <div className="cert-body">
@@ -156,7 +159,6 @@ export function Certificado() {
                 <span className="cert-sign-name">Azaf3</span>
                 <span className="cert-line" />
                 <span className="cert-sign-role">Criador do Primeiro Deploy</span>
-                <span className="cert-sign-role">Instituto Evolutivo de Educação</span>
               </div>
               <div className="cert-center">
                 <div className="cert-seal" aria-hidden>
@@ -176,8 +178,8 @@ export function Certificado() {
       </div>
 
       <p className="cert-note muted small no-print">
-        Certificado de conclusão emitido pela plataforma Primeiro Deploy ({SITE.replace('https://', '')}), uma
-        iniciativa do Instituto Evolutivo de Educação. Certificado livre, não é um diploma reconhecido pelo MEC.
+        Certificado de conclusão emitido pela plataforma Primeiro Deploy ({SITE.replace('https://', '')}), criada por
+        Azaf3 com apoio do Instituto Evolutivo de Educação. Certificado livre, não é um diploma reconhecido pelo MEC.
       </p>
     </div>
   )
