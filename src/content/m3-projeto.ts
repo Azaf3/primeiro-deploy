@@ -65,8 +65,8 @@ Seja direto e realista pra alguém que vai fazer isso em um fim de semana.`,
     {
       id: 'do-prompt-ao-codigo',
       title: 'Do prompt ao código',
-      summary: 'Mandar o pedido pro Claude, salvar o arquivo e ver funcionando.',
-      minutes: 10,
+      summary: 'Mandar o pedido pro Claude, salvar o arquivo e ver funcionando no seu computador.',
+      minutes: 13,
       blocks: [
         { type: 'p', text: 'Com o plano em mãos, é hora de construir. O passo a passo:' },
         {
@@ -97,6 +97,51 @@ Regras:
 - Se precisar guardar dados, use localStorage
 
 Me mande o arquivo completo. Depois, liste em tópicos curtos as partes do código, pra eu saber onde mexer quando quiser mudar algo.`,
+        },
+        { type: 'h', text: 'Rodando local x rodando no ar' },
+        {
+          type: 'p',
+          text: 'Seu projeto vai viver em dois lugares, e é importante saber qual você está vendo:',
+        },
+        {
+          type: 'map',
+          title: 'Onde o projeto roda',
+          root: {
+            label: 'Seu index.html',
+            children: [
+              {
+                label: 'Local',
+                note: 'só no seu PC',
+                children: [
+                  { label: 'Abre com dois cliques' },
+                  { label: 'Ou com o Live Server' },
+                  { label: 'Pra testar e mexer' },
+                ],
+              },
+              {
+                label: 'No ar',
+                note: 'na internet',
+                children: [{ label: 'GitHub Pages' }, { label: 'Link pra qualquer um' }, { label: 'Atualiza a cada push' }],
+              },
+            ],
+          },
+        },
+        {
+          type: 'list',
+          items: [
+            '**Local** é o arquivo rodando no seu computador. O endereço começa com `file://` (dois cliques) ou `http://127.0.0.1:5500` (Live Server). Só você vê. É aqui que você testa cada mudança antes de publicar.',
+            '**No ar** é a versão publicada, com endereço tipo `https://seu-usuario.github.io/projeto/`. Qualquer pessoa abre. Ela só muda quando você manda as mudanças pro GitHub.',
+          ],
+        },
+        {
+          type: 'tip',
+          title: 'Use o Live Server',
+          text: 'No VS Code, instale a extensão **Live Server** e clique em **Go Live** (canto inferior direito). O site abre no navegador e **atualiza sozinho** toda vez que você salva o arquivo. Algumas coisas (como carregar arquivos de outra pasta) só funcionam assim, e não com dois cliques.',
+        },
+        {
+          type: 'tip',
+          title: 'Usando o Codespaces?',
+          text: 'Lá não dá pra dar dois cliques no arquivo. Instale o **Live Server** no Codespaces, clique em **Go Live** e depois em **Abrir no navegador** no aviso que aparecer. Ele cria um link temporário só seu pra testar.',
         },
         { type: 'h', text: 'Fazendo mudanças' },
         {
@@ -137,6 +182,16 @@ Mantenha todo o resto igual. Me mande o arquivo completo atualizado e diga em um
               ],
               correct: 0,
               explain: 'Quando você publica, o GitHub Pages procura o index.html pra mostrar primeiro.',
+            },
+            {
+              prompt: 'Você abriu seu projeto pelo Live Server e mandou o link `http://127.0.0.1:5500` pra um amigo. O que acontece?',
+              options: [
+                'Ele vê seu site normalmente',
+                'Não abre: esse endereço é local, só funciona no seu computador',
+                'Abre só no celular',
+              ],
+              correct: 1,
+              explain: 'Endereço local só existe na sua máquina. Pra outras pessoas verem, o projeto precisa estar no ar (GitHub Pages).',
             },
             {
               prompt: 'Qual o melhor jeito de pedir mudanças?',
@@ -364,7 +419,7 @@ git push -u origin main`,
       id: 'publicando',
       title: 'Publicando: com o Claude ou na mão',
       summary: 'Conecte o Claude ao seu GitHub pra ele publicar por você. Regra da trilha: todo projeto vai pro ar.',
-      minutes: 15,
+      minutes: 18,
       blocks: [
         {
           type: 'p',
@@ -493,6 +548,21 @@ git push -u origin main`,
               correct: 0,
               explain: 'É a causa número 1 de 404 no GitHub Pages.',
             },
+          ],
+        },
+        { type: 'h', text: 'Conferindo no ar' },
+        {
+          type: 'p',
+          text: 'Publicou? Agora teste a versão **no ar**, não a local. Muita coisa funciona no seu PC e quebra online:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Abra o link do GitHub Pages e aperte **Ctrl + Shift + R**. Isso força o navegador a baixar a versão nova em vez de mostrar uma guardada.',
+            'Abra o mesmo link **no celular**. É assim que a maioria das pessoas vai ver.',
+            'Aperte **F12 > Console** no site publicado. Erro vermelho de arquivo não encontrado (404) quase sempre é nome de arquivo com letra maiúscula diferente: no seu PC `Logo.png` e `logo.png` podem ser iguais, no ar não são.',
+            'Imagem ou arquivo que não aparece? Use caminhos relativos, tipo `logo.png` ou `img/logo.png`, nunca `C:/Users/...`.',
+            'Mudou algo? Teste **local** primeiro, depois publique (push ou merge) e confira **no ar** de novo.',
           ],
         },
         {
