@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cada usuário só lê e grava o próprio progresso
+    match /users/{userId}/progress/{lessonId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && lessonId.size() <= 80
+        && request.resource.data.keys().hasOnly(['completedAt'])
+        && request.resource.data.completedAt == request.time;
+    }
+    // Todo o resto fica fechado
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
