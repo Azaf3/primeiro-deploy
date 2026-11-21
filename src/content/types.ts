@@ -49,6 +49,8 @@ export type Lesson = {
   title: string
   summary: string
   minutes: number
+  /** Só aparece pra quem respondeu que ainda não tem conta no GitHub */
+  onlyWithoutGithub?: boolean
   blocks: Block[]
 }
 

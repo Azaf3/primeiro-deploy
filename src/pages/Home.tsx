@@ -1,6 +1,6 @@
 import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../lib/auth'
-import { allLessons, modules } from '../content'
+import { baseTrack } from '../content'
 import { TerminalHero } from '../components/TerminalHero'
 
 const features = [
@@ -16,6 +16,7 @@ export function Home() {
   const { user } = useAuth()
   if (user) return <Navigate to="/trilha" replace />
 
+  const { lessons: allLessons, modules } = baseTrack
   const totalMin = allLessons.reduce((s, l) => s + l.minutes, 0)
   const exercises = allLessons.flatMap((l) => l.blocks).filter((b) => b.type === 'exercise').length
 

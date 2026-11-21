@@ -1817,3 +1817,64 @@ body.anim-paused .bg-anim * {
   font-size: 0.82rem;
   font-weight: 500;
 }
+
+/* Onboarding: pergunta sobre GitHub */
+.onboard {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.onboard-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 28px 0 16px;
+}
+.onboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  padding: 22px;
+  border-radius: var(--r);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), border-color 0.2s, box-shadow 0.2s;
+}
+.onboard-card strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+.onboard-card:hover:not(:disabled),
+.onboard-card.selected {
+  transform: translateY(-3px);
+  border-color: rgba(91, 157, 255, 0.55);
+  box-shadow: var(--glow);
+}
+.onboard-card:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.onboard-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 6px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background: var(--mint-soft);
+  color: var(--mint);
+  border: 1px solid rgba(52, 227, 167, 0.35);
+}
+.onboard-icon.alt {
+  background: var(--amber-soft);
+  color: var(--amber);
+  border-color: rgba(255, 181, 71, 0.35);
+}
+.trilha-foot {
+  text-align: center;
+  margin-top: 8px;
+}

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { allLessons, modules } from '../content'
 import { useAuth } from '../lib/auth'
 import { useProgress } from '../lib/progress'
 
 export function Trilha() {
   const { user } = useAuth()
-  const { completed, loading, error } = useProgress()
+  const { completed, loading, error, track, githubChoice } = useProgress()
+  const { lessons: allLessons, modules } = track
 
   const done = allLessons.filter((l) => completed.has(l.id)).length
   const pct = Math.round((done / allLessons.length) * 100)
@@ -105,6 +105,10 @@ export function Trilha() {
           </section>
         )
       })}
+      <p className="trilha-foot muted small">
+        {githubChoice === 'nao' ? 'Sua trilha inclui a aula extra de GitHub.' : 'Sua trilha não inclui a aula extra de GitHub.'}{' '}
+        <Link to="/comecar">Mudar resposta</Link>
+      </p>
     </div>
   )
 }

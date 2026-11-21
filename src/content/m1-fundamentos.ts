@@ -8,6 +8,151 @@ export const fundamentos: Module = {
   description: 'O mínimo que você precisa entender pra não ficar perdido quando a IA começar a gerar código.',
   lessons: [
     {
+      id: 'git-e-github-conta',
+      title: 'Git, GitHub e sua conta',
+      summary: 'A diferença entre os dois (que todo mundo confunde) e sua conta criada em 10 minutos.',
+      minutes: 10,
+      onlyWithoutGithub: true,
+      blocks: [
+        {
+          type: 'p',
+          text: 'Antes de começar, vamos resolver uma confusão clássica: **Git** e **GitHub** não são a mesma coisa. Os nomes são parecidos, mas um é uma ferramenta e o outro é um site.',
+        },
+        { type: 'h', text: 'Git: o "salvar jogo" do código' },
+        {
+          type: 'p',
+          text: 'Sabe quando você salva o jogo antes da fase difícil, pra poder voltar se der ruim? O **Git** faz isso com seu projeto. Ele é um programa que roda no **seu computador** e guarda versões do código ao longo do tempo. Cada versão salva se chama **commit**.',
+        },
+        {
+          type: 'p',
+          text: 'Com o Git você pode testar uma mudança sem medo: se quebrar tudo, você volta pra versão que funcionava. Ele funciona até sem internet.',
+        },
+        { type: 'h', text: 'GitHub: a nuvem onde o código mora' },
+        {
+          type: 'p',
+          text: 'O **GitHub** é um **site** que guarda seus projetos do Git na internet. Pense nele como um Google Drive feito pra código. Com ele você:',
+        },
+        {
+          type: 'list',
+          items: [
+            'Não perde o projeto se o computador quebrar.',
+            'Acessa o código de qualquer lugar (até pelo navegador, com o Codespaces).',
+            '**Publica seu site de graça** com o GitHub Pages. É assim que seu projeto vai ganhar um link.',
+            'Monta um **portfólio**: recrutadores olham o GitHub de quem se candidata pra vaga de dev.',
+          ],
+        },
+        {
+          type: 'map',
+          title: 'Git x GitHub',
+          root: {
+            label: 'Seu projeto',
+            children: [
+              {
+                label: 'Git',
+                note: 'programa no seu PC',
+                children: [{ label: 'Salva versões (commits)' }, { label: 'Volta no tempo' }, { label: 'Funciona offline' }],
+              },
+              {
+                label: 'GitHub',
+                note: 'site na nuvem',
+                children: [{ label: 'Guarda online' }, { label: 'Publica o site' }, { label: 'Vira portfólio' }],
+              },
+              { label: 'git push', note: 'a ponte', children: [{ label: 'Manda do Git pro GitHub' }] },
+            ],
+          },
+        },
+        {
+          type: 'tip',
+          title: 'Resumindo numa frase',
+          text: 'Git é a ferramenta que salva as versões. GitHub é o lugar online onde essas versões ficam guardadas e viram site.',
+        },
+        { type: 'h', text: 'Criando sua conta no GitHub' },
+        {
+          type: 'list',
+          ordered: true,
+          items: [
+            'Acesse **github.com/signup** (link abaixo).',
+            'Digite seu **email**. Use um que você acessa sempre: o GitHub manda um código de confirmação.',
+            'Crie uma **senha** forte (pelo menos 15 caracteres, ou 8 com número e letra minúscula).',
+            'Escolha seu **nome de usuário**. Ele aparece no link dos seus sites, tipo `seu-usuario.github.io`. Veja as dicas abaixo antes de escolher.',
+            'Resolva o desafio de verificação (aquele "prove que não é robô").',
+            'Abra seu email, copie o **código** que o GitHub mandou e cole na tela.',
+            'Pronto! Se ele fizer perguntas sobre como você vai usar, pode pular ou responder qualquer coisa. Escolha o plano **Free**.',
+          ],
+        },
+        {
+          type: 'tip',
+          tone: 'warn',
+          title: 'Escolha bem o nome de usuário',
+          text: 'Ele vai estar no link de todos os seus projetos e no seu currículo. Prefira algo curto e profissional, como seu nome ou apelido (`joaosilva`, `ana-dev`). Evite `xXmatadorXx2009`. Dá pra mudar depois, mas os links antigos param de funcionar.',
+        },
+        { type: 'h', text: 'Deixando a conta pronta' },
+        {
+          type: 'list',
+          items: [
+            '**Foto de perfil**: clique na sua foto (canto superior direito) > **Settings** > **Profile**. Uma foto sua ou um avatar simples.',
+            '**Bio**: uma linha sobre você, tipo "Aprendendo programação e construindo meus primeiros projetos".',
+            '**Verificação em duas etapas (2FA)**: em **Settings > Password and authentication**. O GitHub pede isso pra quem publica código. Use um app autenticador no celular (Google Authenticator, Microsoft Authenticator) e **guarde os códigos de recuperação** num lugar seguro.',
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Pra criar e aprender mais',
+          items: [
+            { label: 'Criar conta no GitHub', url: 'https://github.com/signup', kind: 'tool' },
+            { label: 'Documentação do GitHub em português: primeiros passos', url: 'https://docs.github.com/pt/get-started', kind: 'doc' },
+            {
+              label: 'Vídeos: diferença entre Git e GitHub',
+              url: 'https://www.youtube.com/results?search_query=diferen%C3%A7a+entre+git+e+github',
+              kind: 'video',
+            },
+            {
+              label: 'Vídeos: como criar conta no GitHub',
+              url: 'https://www.youtube.com/results?search_query=como+criar+conta+no+github',
+              kind: 'video',
+            },
+          ],
+        },
+        {
+          type: 'quiz',
+          id: 'q-git-github',
+          questions: [
+            {
+              prompt: 'Qual a diferença entre Git e GitHub?',
+              options: [
+                'São a mesma coisa com nomes diferentes',
+                'Git é um programa que salva versões no seu PC; GitHub é um site que guarda essas versões online',
+                'Git é pago e GitHub é grátis',
+              ],
+              correct: 1,
+              explain: 'Isso. Um é a ferramenta, o outro é o lugar onde o código fica online.',
+            },
+            {
+              prompt: 'Você mudou o código e quebrou tudo. Quem te deixa voltar pra versão que funcionava?',
+              options: ['O Git, pelos commits', 'O navegador', 'Ninguém, tem que refazer'],
+              correct: 0,
+              explain: 'Cada commit é um ponto salvo. Dá pra voltar pra qualquer um deles.',
+            },
+            {
+              prompt: 'Por que escolher um nome de usuário profissional no GitHub?',
+              options: [
+                'Porque o GitHub bloqueia nomes engraçados',
+                'Porque ele aparece no link dos seus sites e recrutadores vão ver',
+                'Não importa',
+              ],
+              correct: 1,
+              explain: 'Seu usuário vira parte do endereço dos seus projetos, tipo `seu-usuario.github.io`.',
+            },
+          ],
+        },
+        {
+          type: 'tip',
+          title: 'Feito?',
+          text: 'Se você já criou a conta, conclua esta aula e siga pra próxima. Na aula **Git e GitHub sem medo**, mais pra frente, você vai usar o Git de verdade.',
+        },
+      ],
+    },
+    {
       id: 'o-que-e-programar',
       title: 'O que é programar hoje',
       summary: 'Programar mudou. Você não precisa decorar tudo, mas precisa entender o que está pedindo.',

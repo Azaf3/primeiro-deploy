@@ -6,11 +6,12 @@ Cada usuário tem login e progresso próprio.
 
 ## O que tem
 
-- **5 módulos, 20 aulas**: fundamentos, conversando com IA, primeiro projeto, JavaScript pra ler código de IA e um projeto guiado (cardápio online do zero ao deploy)
+- **5 módulos, 20 aulas** (21 pra quem ainda não tem GitHub): fundamentos, conversando com IA, primeiro projeto, JavaScript pra ler código de IA e um projeto guiado (cardápio online do zero ao deploy)
 - **Blocos de conteúdo**: texto, mapas conceituais, prompts prontos pra copiar, links de vídeos e docs, dicas
 - **Testes rápidos** (múltipla escolha) e **exercícios de código JS** com correção automática
 - Código do aluno roda num **Web Worker** isolado, com timeout de 2s (loop infinito não trava a página)
 - Aula só pode ser concluída depois de passar nos testes/exercícios dela
+- No primeiro acesso a pessoa responde se já tem conta no GitHub; quem não tem ganha a aula extra "Git, GitHub e sua conta" (marcada com `onlyWithoutGithub` no conteúdo)
 - Rascunho do código salvo automaticamente no navegador
 
 ## Stack

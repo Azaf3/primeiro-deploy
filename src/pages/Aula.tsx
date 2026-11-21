@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { allLessons, findLesson, requiredChecks } from '../content'
+import { requiredChecks } from '../content'
 import { BlockView } from '../components/Blocks'
 import { useProgress } from '../lib/progress'
 import { useAuth } from '../lib/auth'
@@ -9,9 +9,10 @@ import { NotFound } from './NotFound'
 
 export function Aula() {
   const { id = '' } = useParams()
-  const lesson = findLesson(id)
   const { user } = useAuth()
-  const { completed, markComplete, markIncomplete } = useProgress()
+  const { completed, markComplete, markIncomplete, track } = useProgress()
+  const allLessons = track.lessons
+  const lesson = allLessons.find((l) => l.id === id)
   const checksKey = `pd:checks:${user?.id ?? 'anon'}:${id}`
   const [passed, setPassed] = useState<Set<string>>(() => new Set(readJSON<string[]>(checksKey, [])))
   const [saving, setSaving] = useState(false)
