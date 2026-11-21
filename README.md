@@ -6,7 +6,7 @@ Cada usuário tem login e progresso próprio.
 
 ## O que tem
 
-- **4 módulos, 18 aulas**: fundamentos, conversando com IA, primeiro projeto, JavaScript pra ler código de IA
+- **5 módulos, 20 aulas**: fundamentos, conversando com IA, primeiro projeto, JavaScript pra ler código de IA e um projeto guiado (cardápio online do zero ao deploy)
 - **Blocos de conteúdo**: texto, mapas conceituais, prompts prontos pra copiar, links de vídeos e docs, dicas
 - **Testes rápidos** (múltipla escolha) e **exercícios de código JS** com correção automática
 - Código do aluno roda num **Web Worker** isolado, com timeout de 2s (loop infinito não trava a página)
@@ -24,7 +24,7 @@ npm install
 npm run dev
 ```
 
-A config do Firebase já está em `.env.development` e `.env.production` (é pública por design). Pra rodar em **modo local**, sem Firebase (contas e progresso só no `localStorage`), use `npm run dev -- --mode local`.
+A config do Firebase já está em `.env.development` e `.env.production` (é pública por design). Pra rodar em **modo local**, sem Firebase (contas e progresso só no `localStorage`), use `npm run dev -- --mode offline`.
 
 ## Ligando o Firebase
 

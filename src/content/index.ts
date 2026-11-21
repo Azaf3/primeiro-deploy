@@ -3,8 +3,9 @@ import { fundamentos } from './m1-fundamentos'
 import { ia } from './m2-ia'
 import { projeto } from './m3-projeto'
 import { js } from './m4-js'
+import { guiado } from './m5-guiado'
 
-export const modules: Module[] = [fundamentos, ia, projeto, js]
+export const modules: Module[] = [fundamentos, ia, projeto, js, guiado]
 
 export type FlatLesson = Lesson & { moduleId: string; moduleTitle: string; index: number }
 
