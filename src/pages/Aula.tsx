@@ -120,9 +120,9 @@ export function Aula() {
             {next.title}
           </Link>
         ) : (
-          <Link to="/trilha" className="pager-link right">
+          <Link to="/certificado" className="pager-link right">
             <span className="muted small">Fim da trilha</span>
-            Voltar pra trilha
+            Ver meu certificado 🎓
           </Link>
         )}
       </nav>

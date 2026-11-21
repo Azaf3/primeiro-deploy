@@ -51,10 +51,23 @@ export function Trilha() {
               {done === 0 ? 'Começar primeira aula' : `Continuar: ${next.title}`}
             </Link>
           ) : (
-            <p className="status ok">Agora é publicar seu projeto e mostrar pro mundo.</p>
+            <Link to="/certificado" className="btn primary">
+              Ver meu certificado 🎓
+            </Link>
           )}
         </div>
       </section>
+
+      {!next && (
+        <section className="trilha-cert">
+          <p>
+            <strong>Você concluiu a trilha inteira!</strong> Seu certificado está pronto.
+          </p>
+          <Link to="/certificado" className="btn primary">
+            Ver meu certificado 🎓
+          </Link>
+        </section>
+      )}
 
       {modules.map((m, mi) => {
         const mDone = m.lessons.filter((l) => completed.has(l.id)).length

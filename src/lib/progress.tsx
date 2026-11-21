@@ -23,10 +23,13 @@ type ProgressState = {
   setGithubChoice: (choice: 'sim' | 'nao') => Promise<void>
   /** Trilha deste usuário (21 aulas sem GitHub, 20 com) */
   track: Track
+  /** Quando cada aula foi concluída (ms desde 1970) */
+  completedAt: Record<string, number>
 }
 
 const ProgressContext = createContext<ProgressState | null>(null)
 const localKey = (userId: string) => `pd:progress:${userId}`
+const datesKey = (userId: string) => `pd:dates:${userId}`
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth()
@@ -34,10 +37,12 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   // id do usuário cujo progresso já foi carregado: evita decidir nada com dados de outro login
   const [loadedFor, setLoadedFor] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [completedAt, setCompletedAt] = useState<Record<string, number>>({})
 
   useEffect(() => {
     if (!user) {
       setCompleted(new Set())
+      setCompletedAt({})
       setLoadedFor(null)
       return
     }
@@ -46,13 +51,21 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
     if (!db) {
       setCompleted(new Set(readJSON<string[]>(localKey(user.id), [])))
+      setCompletedAt(readJSON<Record<string, number>>(datesKey(user.id), {}))
       setLoadedFor(user.id)
       return
     }
 
     getDocs(collection(db, 'users', user.id, 'progress'))
       .then((snap) => {
-        if (!cancelled) setCompleted(new Set(snap.docs.map((d) => d.id)))
+        if (cancelled) return
+        setCompleted(new Set(snap.docs.map((d) => d.id)))
+        const dates: Record<string, number> = {}
+        for (const d of snap.docs) {
+          const ts = d.data().completedAt as { toMillis?: () => number } | undefined
+          if (ts?.toMillis) dates[d.id] = ts.toMillis()
+        }
+        setCompletedAt(dates)
       })
       .catch(() => {
         if (!cancelled) setError('Não foi possível carregar seu progresso. Tente recarregar a página.')
@@ -74,6 +87,13 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       if (done) next.add(lessonId)
       else next.delete(lessonId)
       setCompleted(next) // otimista: a tela responde na hora
+      if (done) {
+        setCompletedAt((d) => {
+          const nd = { ...d, [lessonId]: Date.now() }
+          if (!db) writeJSON(datesKey(user.id), nd)
+          return nd
+        })
+      }
 
       if (!db) {
         writeJSON(localKey(user.id), [...next])
@@ -124,7 +144,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   )
 
   return (
-    <ProgressContext.Provider value={{ completed, loading, error, markComplete, markIncomplete, githubChoice, setGithubChoice, track }}>
+    <ProgressContext.Provider value={{ completed, loading, error, markComplete, markIncomplete, githubChoice, setGithubChoice, track, completedAt }}>
       {children}
     </ProgressContext.Provider>
   )

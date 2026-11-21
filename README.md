@@ -11,6 +11,7 @@ Cada usuário tem login e progresso próprio.
 - **Testes rápidos** (múltipla escolha) e **exercícios de código JS** com correção automática
 - Código do aluno roda num **Web Worker** isolado, com timeout de 2s (loop infinito não trava a página)
 - Aula só pode ser concluída depois de passar nos testes/exercícios dela
+- **Certificado de conclusão** ao terminar a trilha: nome editável, carga horária, módulos, projetos publicados, código, PDF (A4 paisagem via impressão) e botão "Adicionar ao LinkedIn"
 - **Missões de publicação**: nas aulas de projeto o aluno cola o link do repositório e do site; a plataforma confere pela API do GitHub se o repositório existe e é público, e se o site abre no GitHub Pages
 - No primeiro acesso a pessoa responde se já tem conta no GitHub; quem não tem ganha a aula extra "Git, GitHub e sua conta" (marcada com `onlyWithoutGithub` no conteúdo)
 - Rascunho do código salvo automaticamente no navegador

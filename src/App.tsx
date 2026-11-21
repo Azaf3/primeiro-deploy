@@ -9,6 +9,7 @@ import { Trilha } from './pages/Trilha'
 import { Aula } from './pages/Aula'
 import { NotFound } from './pages/NotFound'
 import { Comecar } from './pages/Comecar'
+import { Certificado } from './pages/Certificado'
 
 function RequireAuth({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth()
@@ -62,6 +63,16 @@ export default function App() {
                   <RequireAuth>
                     <RequireOnboarding>
                       <Aula />
+                    </RequireOnboarding>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="certificado"
+                element={
+                  <RequireAuth>
+                    <RequireOnboarding>
+                      <Certificado />
                     </RequireOnboarding>
                   </RequireAuth>
                 }
