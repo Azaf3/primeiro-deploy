@@ -72,6 +72,7 @@ export function Certificado() {
     .map((id) => readJSON<Deploy>(`pd:deploy:${user.id}:${id}`, { repo: '', site: '' }).site)
     .filter(Boolean)
     .map((s) => s.replace(/^https?:\/\//, '').replace(/\/$/, ''))
+    .filter((s, i, all) => all.indexOf(s) === i)
 
   const linkedin =
     'https://www.linkedin.com/profile/add?' +
