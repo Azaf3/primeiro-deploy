@@ -195,15 +195,22 @@ Corrija só esses pontos, mantendo todo o resto igual. Me mande o arquivo comple
         },
         { type: 'h', text: 'Passo 4: publicar' },
         {
+          type: 'p',
+          text: 'Mesmo esquema da aula **Publicando: com o Claude ou na mão**. Escolha o caminho:',
+        },
+        {
           type: 'list',
-          ordered: true,
           items: [
-            'Crie um repositório público no GitHub chamado `meu-cardapio` (sem README).',
-            'Na pasta do projeto: `git init`, `git add .`, `git commit -m "primeira versão do cardápio"`.',
-            '`git branch -M main`, `git remote add origin` com o link do repositório e `git push -u origin main`.',
-            'No repositório: **Settings > Pages > Deploy from a branch > main / (root)**.',
-            'Em 1 ou 2 minutos, seu link está no ar. Mande pra alguém testar!',
+            '**Caminho A (Claude publica)**: crie o repositório `meu-cardapio` com README, abra o claude.ai/code, selecione o repositório e peça: "Adicione este cardápio ao repositório como index.html na raiz, junto com o logo.png, atualize o README e faça o commit", colando o código (ou mande o plano e deixe ele construir lá). Depois: **Create PR > Merge pull request**.',
+            '**Caminho B (na mão)**: crie o repositório `meu-cardapio` sem README e rode na pasta do projeto `git init`, `git add .`, `git commit -m "primeira versão do cardápio"`, `git branch -M main`, `git remote add origin` com o link do repositório e `git push -u origin main`.',
+            'Nos dois: **Settings > Pages > Deploy from a branch > main / (root) > Save** e espere 1 ou 2 minutos.',
           ],
+        },
+        {
+          type: 'deploy',
+          id: 'deploy-cardapio',
+          title: 'Coloque o cardápio no ar',
+          text: 'Cole o link do repositório e do site publicado. Depois de conferido, mande o link pra alguém testar fazendo um pedido!',
         },
         {
           type: 'tip',

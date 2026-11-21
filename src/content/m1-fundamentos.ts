@@ -148,7 +148,7 @@ export const fundamentos: Module = {
         {
           type: 'tip',
           title: 'Feito?',
-          text: 'Se você já criou a conta, conclua esta aula e siga pra próxima. Na aula **Git e GitHub sem medo**, mais pra frente, você vai usar o Git de verdade.',
+          text: 'Se você já criou a conta, conclua esta aula e siga pra próxima. Mais pra frente você vai conectar essa conta ao Claude, pra ele publicar seus projetos por você, e todo projeto da trilha vai pro ar com um link seu.',
         },
       ],
     },

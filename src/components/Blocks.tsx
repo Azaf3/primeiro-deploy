@@ -5,6 +5,7 @@ import { ConceptMap } from './ConceptMap'
 import { Quiz } from './Quiz'
 import { CodeExercise } from './CodeExercise'
 import { Highlight } from './Highlight'
+import { DeployMission } from './DeployMission'
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -132,6 +133,16 @@ export function BlockView({ block, passed, onPass }: BlockProps) {
       return <ConceptMap title={block.title} root={block.root} />
     case 'quiz':
       return <Quiz questions={block.questions} alreadyDone={passed.has(block.id)} onPass={() => onPass(block.id)} />
+    case 'deploy':
+      return (
+        <DeployMission
+          id={block.id}
+          title={block.title}
+          text={block.text}
+          alreadyDone={passed.has(block.id)}
+          onPass={() => onPass(block.id)}
+        />
+      )
     case 'exercise':
       return (
         <CodeExercise

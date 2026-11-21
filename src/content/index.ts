@@ -34,5 +34,5 @@ export const baseTrack = buildTrack(false)
 
 /** ids de quiz/exercício que precisam passar pra concluir a aula */
 export function requiredChecks(lesson: Lesson): string[] {
-  return lesson.blocks.flatMap((b) => (b.type === 'quiz' || b.type === 'exercise' ? [b.id] : []))
+  return lesson.blocks.flatMap((b) => (b.type === 'quiz' || b.type === 'exercise' || b.type === 'deploy' ? [b.id] : []))
 }

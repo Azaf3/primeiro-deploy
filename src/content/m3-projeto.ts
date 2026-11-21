@@ -362,36 +362,109 @@ git push -u origin main`,
     },
     {
       id: 'publicando',
-      title: 'Publicando no GitHub Pages',
-      summary: 'Seu site com link pra mandar no grupo da família. De graça.',
-      minutes: 6,
+      title: 'Publicando: com o Claude ou na mão',
+      summary: 'Conecte o Claude ao seu GitHub pra ele publicar por você. Regra da trilha: todo projeto vai pro ar.',
+      minutes: 15,
       blocks: [
-        { type: 'p', text: 'Com o código no GitHub, publicar leva dois minutos:' },
+        {
+          type: 'p',
+          text: '**Regra desta trilha: todo projeto que você fizer aqui vai pro GitHub e fica no ar.** Projeto que só existe no seu computador não conta pra portfólio, não dá pra mandar pra ninguém e some se o PC quebrar. A partir de agora, as aulas de projeto só são concluídas com o link publicado.',
+        },
+        {
+          type: 'map',
+          title: 'Dois caminhos pro mesmo lugar',
+          root: {
+            label: 'Projeto no ar',
+            children: [
+              {
+                label: 'Caminho A',
+                note: 'o Claude publica',
+                children: [{ label: 'claude.ai/code' }, { label: 'Conecta no seu GitHub' }, { label: 'Você só aprova' }],
+              },
+              {
+                label: 'Caminho B',
+                note: 'na mão, grátis',
+                children: [{ label: 'git add / commit' }, { label: 'git push' }],
+              },
+              { label: 'GitHub Pages', note: 'nos dois', children: [{ label: 'Link seu-usuario.github.io' }] },
+            ],
+          },
+        },
+        { type: 'h', text: 'Caminho A: o Claude publica por você' },
+        {
+          type: 'p',
+          text: 'O **Claude Code na web** (claude.ai/code) é uma versão do Claude que trabalha direto no seu GitHub: ele pega o repositório, escreve os arquivos, salva as versões e manda tudo pra lá. Você descreve o que quer e aprova o resultado.',
+        },
+        {
+          type: 'tip',
+          tone: 'warn',
+          title: 'Precisa de plano pago',
+          text: 'O Claude Code na web funciona nos planos **Pro** ou superiores do Claude, não no plano grátis. Se você está no grátis, use o **Caminho B** mais abaixo: o resultado é o mesmo.',
+        },
         {
           type: 'list',
           ordered: true,
           items: [
-            'Abra o repositório no GitHub.',
-            'Vá em **Settings** e depois **Pages** (no menu da esquerda).',
-            'Em **Source**, escolha **Deploy from a branch**.',
-            'Em **Branch**, escolha `main` e a pasta `/ (root)`. Clique em **Save**.',
-            'Espere 1 ou 2 minutos e recarregue. O link aparece no topo: `https://SEU-USUARIO.github.io/meu-cardapio/`',
+            '**Crie o repositório**: em github.com/new, dê o nome do projeto, deixe **Public** e marque **Add a README file**. O Claude Code precisa de um repositório que já exista e não esteja vazio.',
+            '**Conecte o Claude ao GitHub**: entre em **claude.ai/code** com sua conta do Claude. Ele pede pra conectar o GitHub: siga o aviso, autorize na página do GitHub e você volta pro Claude. Isso é feito **uma vez só**.',
+            '**Escolha o repositório** no seletor que fica embaixo da caixa de texto. Repositórios públicos já aparecem. (Pra usar repositórios privados, o Claude pede pra instalar o app **Claude** no seu GitHub.)',
+            '**Escolha o modo** no controle de permissão: **Accept edits** (ele faz e publica sem parar pra perguntar) ou **Plan** (ele mostra o plano e espera você aprovar antes de mexer).',
+            '**Mande o prompt** abaixo e acompanhe. Pode até fechar a aba: ele continua trabalhando.',
+            'Quando terminar, ele **sobe uma branch** (uma versão paralela) com as mudanças. Confira no painel de diferenças, clique em **Create PR** e depois, no GitHub, em **Merge pull request**. Agora as mudanças estão na `main`.',
+            '**Ligue o site**: no repositório, **Settings > Pages > Deploy from a branch > main / (root) > Save**. Em 1 ou 2 minutos está no ar.',
           ],
         },
         {
+          type: 'prompt',
+          title: 'Pedindo pro Claude construir e publicar',
+          tool: 'Claude',
+          text: `Este repositório vai ser meu projeto: [descreva em uma frase, ou cole o plano de 1 página].
+
+Sou iniciante. Regras:
+- Crie um único arquivo index.html na raiz, com CSS dentro de <style> e JavaScript dentro de <script>
+- Sem frameworks e sem bibliotecas externas
+- Responsivo (bom no celular)
+- Comentários curtos em português explicando cada seção
+- Atualize o README.md com uma descrição curta do projeto
+
+Ao terminar, faça o commit com uma mensagem clara em português e me explique em tópicos curtos o que cada parte do código faz.`,
+        },
+        {
           type: 'tip',
-          title: 'Atualizou o código?',
-          text: 'Cada `git push` atualiza o site sozinho em cerca de um minuto. Se não mudou, aperte Ctrl + Shift + R pra forçar o navegador a baixar a versão nova.',
+          title: 'Por que o Claude não publica direto na main?',
+          text: 'De propósito: ele trabalha numa branch separada e **você** decide se entra. O "Merge pull request" é você dizendo "conferi, pode publicar". É o mesmo jeito que times de dev trabalham.',
+        },
+        { type: 'h', text: 'Caminho B: na mão, com git (grátis)' },
+        {
+          type: 'p',
+          text: 'Crie o repositório em github.com/new, **Public**, e dessa vez **sem** README (o seu projeto já tem arquivos). Depois, no terminal, dentro da pasta do projeto:',
+        },
+        {
+          type: 'code',
+          lang: 'terminal',
+          code: `git init
+git add .
+git commit -m "primeira versão"
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/NOME-DO-PROJETO.git
+git push -u origin main`,
+        },
+        {
+          type: 'p',
+          text: 'Depois ligue o site igual ao passo 7 do Caminho A: **Settings > Pages > Deploy from a branch > main / (root) > Save**.',
         },
         {
           type: 'tip',
           tone: 'warn',
           title: 'Deu 404?',
-          text: 'Confira se o arquivo se chama exatamente `index.html` (tudo minúsculo) e se está na raiz do repositório, não dentro de uma subpasta.',
+          text: 'Confira se o arquivo se chama exatamente `index.html` (tudo minúsculo), se está na raiz do repositório e se já passaram uns 2 minutos. Cada `git push` (ou merge) atualiza o site sozinho.',
         },
         {
           type: 'links',
           items: [
+            { label: 'Claude Code na web', url: 'https://claude.ai/code', kind: 'tool' },
+            { label: 'Guia oficial: começando com o Claude Code na web (em inglês)', url: 'https://code.claude.com/docs/en/web-quickstart', kind: 'doc' },
+            { label: 'Criar repositório no GitHub', url: 'https://github.com/new', kind: 'tool' },
             {
               label: 'Documentação oficial do GitHub Pages (em português)',
               url: 'https://docs.github.com/pt/pages/getting-started-with-github-pages',
@@ -405,12 +478,28 @@ git push -u origin main`,
           id: 'q-pages',
           questions: [
             {
+              prompt: 'O Claude Code terminou e subiu uma branch. O que falta pro site atualizar?',
+              options: [
+                'Nada, já está no ar',
+                'Criar o PR e fazer o merge na main',
+                'Apagar o repositório e criar de novo',
+              ],
+              correct: 1,
+              explain: 'O site é publicado a partir da `main`. O merge é você aprovando as mudanças.',
+            },
+            {
               prompt: 'Seu site publicado deu 404. Qual a primeira coisa a conferir?',
               options: ['Se o arquivo se chama index.html e está na raiz', 'Se o computador está ligado', 'A cor do site'],
               correct: 0,
               explain: 'É a causa número 1 de 404 no GitHub Pages.',
             },
           ],
+        },
+        {
+          type: 'deploy',
+          id: 'deploy-primeiro-projeto',
+          title: 'Publique seu primeiro projeto',
+          text: 'Publique o projeto que você construiu neste módulo (pelo Caminho A ou B) e cole os links abaixo. A plataforma confere se o repositório existe e se o site abre.',
         },
       ],
     },

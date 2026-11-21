@@ -43,6 +43,13 @@ export type Block =
       hint?: string
       solution?: string
     }
+  | {
+      /** Missão: publicar o projeto. Confere se o repositório existe e o site está no ar */
+      type: 'deploy'
+      id: string
+      title: string
+      text: string
+    }
 
 export type Lesson = {
   id: string

@@ -1878,3 +1878,33 @@ body.anim-paused .bg-anim * {
   text-align: center;
   margin-top: 8px;
 }
+
+/* Missão de publicação */
+.mission {
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(91, 157, 255, 0.4);
+  border-radius: var(--r);
+  padding: 20px;
+  box-shadow: 0 0 50px -28px rgba(91, 157, 255, 0.7);
+}
+.mission.done {
+  border-color: rgba(52, 227, 167, 0.5);
+  box-shadow: 0 0 50px -28px rgba(52, 227, 167, 0.7);
+}
+.mission .block-label::before {
+  content: '>_';
+}
+.mission-form {
+  margin-top: 6px;
+}
+.mission-form .field input {
+  font-family: var(--font-mono);
+  font-size: 15px;
+}
+.mission-msg {
+  font-family: var(--font-body);
+  font-weight: 500;
+  margin-top: 10px;
+}
