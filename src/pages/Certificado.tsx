@@ -78,7 +78,7 @@ export function Certificado() {
     new URLSearchParams({
       startTask: 'CERTIFICATION_NAME',
       name: COURSE,
-      organizationName: 'Primeiro Deploy',
+      organizationName: 'Instituto Evolutivo de Educação',
       issueYear: String(date.getFullYear()),
       issueMonth: String(date.getMonth() + 1),
       certUrl: SITE,
@@ -128,7 +128,7 @@ export function Certificado() {
                   primeiro<span className="cert-accent">-deploy</span>
                 </span>
               </span>
-              <span className="cert-code">{code}</span>
+              <img className="cert-iee" src="./iee-logo.png" alt="Instituto Evolutivo de Educação" />
             </div>
 
             <div className="cert-body">
@@ -156,10 +156,14 @@ export function Certificado() {
                 <span className="cert-sign-name">Azaf3</span>
                 <span className="cert-line" />
                 <span className="cert-sign-role">Criador do Primeiro Deploy</span>
+                <span className="cert-sign-role">Instituto Evolutivo de Educação</span>
               </div>
-              <div className="cert-seal" aria-hidden>
-                <span className="cert-seal-check">✓</span>
-                <span className="cert-seal-text">deploy feito</span>
+              <div className="cert-center">
+                <div className="cert-seal" aria-hidden>
+                  <span className="cert-seal-check">✓</span>
+                  <span className="cert-seal-text">deploy feito</span>
+                </div>
+                <span className="cert-code">{code}</span>
               </div>
               <div className="cert-sign right">
                 <span className="cert-sign-name date">{dateText}</span>
@@ -172,8 +176,8 @@ export function Certificado() {
       </div>
 
       <p className="cert-note muted small no-print">
-        Certificado de conclusão emitido pela plataforma Primeiro Deploy ({SITE.replace('https://', '')}). Não é um
-        diploma reconhecido pelo MEC.
+        Certificado de conclusão emitido pela plataforma Primeiro Deploy ({SITE.replace('https://', '')}), uma
+        iniciativa do Instituto Evolutivo de Educação. Certificado livre, não é um diploma reconhecido pelo MEC.
       </p>
     </div>
   )

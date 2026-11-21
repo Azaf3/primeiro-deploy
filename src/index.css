@@ -2211,3 +2211,57 @@ body.anim-paused .bg-anim * {
     box-shadow: none;
   }
 }
+
+/* Instituto Evolutivo de Educação */
+.cert-iee {
+  height: 9cqw;
+  margin: -1.2cqw 0;
+  width: auto;
+  display: block;
+}
+.cert-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1cqw;
+}
+.cert-center .cert-code {
+  font-size: 0.95cqw;
+}
+.cert-sign-role {
+  max-width: 26cqw;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.footer-iee {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--muted);
+}
+.footer-iee-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+.footer-iee-badge {
+  display: inline-grid;
+  place-items: center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 24px -12px rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s var(--ease);
+}
+.footer-iee:hover .footer-iee-badge {
+  transform: translateY(-2px);
+}
+.footer-iee-badge img {
+  height: 64px;
+  width: auto;
+  display: block;
+}
